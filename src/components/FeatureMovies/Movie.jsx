@@ -1,3 +1,4 @@
+import ImageComponent from '@/components/ImageComponent';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -9,10 +10,12 @@ const Movie = (props) => {
 
   return (
     <>
-      <img
+      <ImageComponent
         src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
         alt=''
         className='w-full h-auto object-cover brightness-50 aspect-video'
+        width={900}
+        height={500}
       />
       <div className='absolute bottom-[45%] left-8 w-1/2 sm:w-1/3'>
         <p className='font-bold sm:text-[2vw] mb-2'>{title}</p>
