@@ -10,7 +10,7 @@ const MovieDetail = () => {
   const { id } = useParams();
 
   const { data: movieInfo, isLoading } = useFetch({
-    url: `/movie/${id}?append_to_response=release_dates,credits`,
+    url: `/movie/${id}?append_to_response=release_dates,credits,video`,
     method: 'GET',
   });
 
@@ -48,6 +48,11 @@ const MovieDetail = () => {
         overview={movieInfo.overview}
         certification={certification}
         crews={crews}
+        trailerVideoKey={
+          (movieInfo.videos?.results || []).find(
+            (video) => video.type === 'Trailer'
+          )?.key
+        }
       />
       <div className='bg-black text-white text-[1.2vw]'>
         <div className='flex relative w-full mx-auto p-6 sm:gap-8 py-10 gap-6 '>
